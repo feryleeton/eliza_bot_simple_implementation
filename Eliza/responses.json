@@ -1,0 +1,20 @@
+[
+    {
+        "answer": "Hello",
+        "list_of_words": ["hello", "hi", "sup"],
+        "single_response": true,
+        "required_words": []
+    },
+    {
+        "answer": "Of course I am not, how about you?",
+        "list_of_words": ["are", "you", "bot"],
+        "single_response": false,
+        "required_words": ["you", "bot"]
+    },
+    {
+        "answer": "How cute and i love you",
+        "list_of_words": ["i", "love", "you", "eliza"],
+        "single_response": false,
+        "required_words": ["love", "you"]
+    }
+]

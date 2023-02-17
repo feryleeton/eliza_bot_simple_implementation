@@ -1,4 +1,5 @@
 import re
+import json
 import logging
 
 logging.basicConfig(filename='chatlog.log', encoding='utf-8', level=logging.DEBUG)
@@ -33,9 +34,10 @@ class Eliza:
             nonlocal highest_prob_list
             highest_prob_list[bot_response] = self.msg_probability(message, list_of_words, single_response, required_words)
 
-        response('Hello', ['hello', 'hi', 'sup'], single_response=True)
-        response('Of course I am not, how about you?', ['are', 'you', 'bot'], required_words=['you', 'bot'])
-        response('How cute and i love you', ['i', 'love', 'you', 'eliza'], required_words=['love', 'you'])
+        with open('Eliza/responses.json') as resp_file:
+            responses = json.load(resp_file)
+            for resp in responses:
+                response(resp['answer'], resp['list_of_words'], resp['single_response'], resp['required_words'])
 
         best_match = max(highest_prob_list, key=highest_prob_list.get)
         if highest_prob_list[best_match] > 0:
