@@ -1,6 +1,7 @@
 import re
 import json
 import logging
+from .horoscope import HoroscopeGenerator
 
 logging.basicConfig(filename='chatlog.log', encoding='utf-8', level=logging.DEBUG)
 
@@ -45,11 +46,16 @@ class Eliza:
             return best_match
         else:
             logging.warning(f"Input: {message} \nAnswer not found\n")
-            return 'Sorry I didn not understand you'
+            return 'Sorry I did not understand you'
 
     def get_response(self, user_input):
         words_list = re.split(r'\s+|[,;&!.-]\s*', user_input.lower())
         response = self.check_all_msgs(words_list)
+
+        if response == 'horoscope_daily':
+            h_gen = HoroscopeGenerator()
+            return h_gen.get_horoscope_daily()
+
         return response
 
     def start_dialog(self):

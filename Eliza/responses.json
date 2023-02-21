@@ -16,5 +16,11 @@
         "list_of_words": ["i", "love", "you", "eliza"],
         "single_response": false,
         "required_words": ["love", "you"]
+    },
+    {
+        "answer": "horoscope_daily",
+        "list_of_words": ["my", "daily", "horoscope", "prediction"],
+        "single_response": false,
+        "required_words": ["daily", "horoscope"]
     }
 ]
